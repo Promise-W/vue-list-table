@@ -23,8 +23,8 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-### how to test and use
+### How to test and use
 See [test demo](https://github.com/Promise-W/vue-list-table/blob/develop/demo/main.js)
 
-### npm link
+### NPM link
 npm: https://nodei.co/#vue-list-table
