@@ -1,6 +1,6 @@
 {
   "name": "vue-list-table",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "src/index.js",
   "private": false,
   "scripts": {
@@ -41,5 +41,9 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Promise-W/vue-list-table.git"
+  }
 }
