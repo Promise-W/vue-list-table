@@ -2,15 +2,19 @@
   <div class="list-table">
     <el-table v-loading="customColumn.loading" :data="tableData" style="width: 100%;" :max-height="tableHeight" border>
       <el-table-column v-if="showDefaultIndex" label="序号" fixed="left" width="60">
+        <!-- 如果是element-plus，这里是 <template #default="scope"> -->
         <template slot-scope="scope">
           <span :rowID="scope.row.id">{{ (currentPage - 1) * pageSize + scope.$index + 1 }}</span>
         </template>
       </el-table-column>
 
       <el-table-column v-for="(column, index) in customColumn.allColumn" :key="index" :prop="column.dataColumn" :label="column.name">
-        <slot slot-scope="scope" :index="index" :name="column.dataColumn" :scope="scope">
-          <div class="" v-html="columnBuilder(scope.row, column)" />
-        </slot>
+        <!-- 如果是element-plus，这里是 <template #default="scope"> -->
+        <template slot-scope="scope">
+          <slot :name="column.dataColumn" :row="scope.row" :index="index">
+            <div class="column-item" v-html="columnBuilder(scope.row, column)" />
+          </slot>
+        </template>
       </el-table-column>
 
       <slot />
