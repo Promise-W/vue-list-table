@@ -1,5 +1,5 @@
 // 导入button组件
-import ListTable from './../packages/ListTable'
+import ListTable from './../packages/ListTable/index.vue'
 
 // 组件列表
 const components = [

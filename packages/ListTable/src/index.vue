@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import Pagination from './components/Pagination'
+import Pagination from './components/Pagination/index.vue'
 
 export default {
   name: 'ListTable',
