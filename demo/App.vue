@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <ListTable :custom-column="customColumn" :table-data="tableData" :total="total" :current-page="currentPage" :page-size.sync="pageSize" @paginationFn="paginationFn">
-      <template slot="remark" slot-scope="{scope}">
+      <template v-slot:remark="scope">
         {{ '具名插槽 - ' + scope.row.remark }}
       </template>
 
-      <el-table-column label="操作" min-width="130" align="center">
+      <el-table-column label="操作(我在listTable默认插槽)" min-width="130" align="center">
         <template slot-scope="scope">
           <el-button type="text" size="small" @click="edit(scope.row)">修改</el-button>
           <el-popconfirm icon="el-icon-info" icon-color="red" title="确定删除吗？" placement="top" @onConfirm="delete(scope.row)">
@@ -40,11 +40,11 @@ export default {
             }
           },
           {
-            name: '备注', // 使用列的具名插槽
+            name: '备注(我在listTalbe列的具名插槽)', // 使用列的具名插槽
             dataColumn: 'remark'
           },
           {
-            name: '操作', // 使用默认插槽，使用一个完整的列标签 <el-table-column>
+            name: '操作(我在配置上)', // 使用默认插槽，使用一个完整的列标签 <el-table-column>
             dataColumn: 'operate'
           }
         ]
