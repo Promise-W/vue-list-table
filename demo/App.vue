@@ -7,8 +7,8 @@
 
       <el-table-column label="操作(我在listTable默认插槽)" min-width="130" align="center">
         <template slot-scope="scope">
-          <el-button type="text" size="small" @click="edit(scope.row)">修改</el-button>
-          <el-popconfirm icon="el-icon-info" icon-color="red" title="确定删除吗？" placement="top" @onConfirm="delete(scope.row)">
+          <el-button type="text" size="small" @click="handleEdit(scope.row)">修改</el-button>
+          <el-popconfirm icon="el-icon-info" icon-color="red" title="确定删除吗？" placement="top" @confirm="handleDelete(scope.row)">
             <el-button slot="reference" type="text" size="small" style="margin-left: 10px;">删除</el-button>
           </el-popconfirm>
         </template>
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-// import { ListTable } from './../src/' // 局部导入
+// import { ListTable } from '../src/' // 局部导入
 
 export default {
   name: 'App',
@@ -59,11 +59,13 @@ export default {
     }
   },
   methods: {
-    edit(row) {
+    getList() {
+      // ajax || axios
+    },
+    handleEdit(row) {
       console.log('edit', row)
     },
-    delete(row) {
-      debugger
+    handleDelete(row) {
       console.log('delete', row)
     },
     paginationFn(data) {
