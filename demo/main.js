@@ -5,7 +5,7 @@ import App from './App.vue'
 
 Vue.use(ElementUI)
 
-import ListTable from './../src/index.vue' // 全局导入
+import ListTable from './../src' // 全局导入
 Vue.use(ListTable)
 // import { ListTable } from './../src/index.vue' // 全局导入
 // Vue.component('ListTable', ListTable)
