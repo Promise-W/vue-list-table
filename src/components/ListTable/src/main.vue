@@ -3,7 +3,7 @@
     <el-table v-loading="customColumn.loading" :data="tableData" style="width: 100%;" :max-height="tableHeight" border>
       <el-table-column v-if="showDefaultIndex" label="序号" fixed="left" width="60">
         <!-- 如果是element-plus，这里是 <template #default="scope"> -->
-        <template slot-scope="scope">
+        <template #default="scope">
           <span :rowID="scope.row.id">{{ (currentPage - 1) * pageSize + scope.$index + 1 }}</span>
         </template>
       </el-table-column>
@@ -11,9 +11,8 @@
       <el-table-column v-for="(column, index) in customColumn.allColumn" :key="index" :prop="column.dataColumn" :label="column.name">
         <!-- 如果是element-plus，这里是 <template #default="scope"> -->
         <template slot-scope="scope">
-          <slot :name="column.dataColumn" :row="scope.row" :index="index">
-            <div class="column-item" v-html="columnBuilder(scope.row, column)" />
-          </slot>
+          <slot v-if="column.slot" :name="column.dataColumn" :index="index" v-bind="scope" />
+          <div v-else class="column-item" v-html="columnBuilder(scope.row, column)" />
         </template>
       </el-table-column>
 
@@ -22,7 +21,6 @@
 
     <div class="page-style">
       <pagination
-        class="fr"
         :total="total"
         :page="currentPage"
         :limit="pageSize"
@@ -33,7 +31,7 @@
 </template>
 
 <script>
-import Pagination from './components/Pagination/index.vue'
+import Pagination from '../../Pagination'
 
 export default {
   name: 'ListTable',
@@ -113,5 +111,6 @@ export default {
   font-size: 14px;
   color: #8c8c8c;
   letter-spacing: -0.43px;
+  text-align: right;
 }
 </style>

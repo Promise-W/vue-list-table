@@ -20,6 +20,11 @@ npm run build
 npm run lint
 ```
 
+### package plugin to lib
+```
+npm run lib
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 

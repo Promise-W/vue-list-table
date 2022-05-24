@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <ListTable :custom-column="customColumn" :table-data="tableData" :total="total" :current-page="currentPage" :page-size.sync="pageSize" @paginationFn="paginationFn">
-      <template v-slot:remark="scope">
-        {{ '具名插槽 - ' + scope.row.remark }}
+      <template #remark="{ row }">
+        {{ '具名插槽 - ' + row.remark }}
       </template>
 
       <el-table-column label="操作(我在listTable默认插槽)" min-width="130" align="center">
@@ -41,7 +41,8 @@ export default {
           },
           {
             name: '备注(我在listTalbe列的具名插槽)', // 使用列的具名插槽
-            dataColumn: 'remark'
+            dataColumn: 'remark',
+            slot: true
           },
           {
             name: '操作(我在配置上)', // 使用默认插槽，使用一个完整的列标签 <el-table-column>
@@ -53,7 +54,7 @@ export default {
         { name: 'mock1', company: '华为', 'remark': '我是华为公司人员' },
         { name: 'mock2', company: '海思', 'remark': '我是海思公司人员' }
       ],
-      total: 0,
+      total: 100,
       currentPage: 1,
       pageSize: 30
     }
